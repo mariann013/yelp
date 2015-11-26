@@ -1,7 +1,6 @@
 class RestaurantsController < ApplicationController
-  # def index
-  #   raise "Hello from the index action"
-  # end
+
+  before_action :authenticate_user!
 
   def index
     @restaurants = Restaurant.all

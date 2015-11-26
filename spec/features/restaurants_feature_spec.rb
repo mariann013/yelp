@@ -3,6 +3,7 @@ require 'rails_helper'
   feature 'restaurants' do
     context 'no restaurants have been added' do
       scenario ' should display a prompt to add a restaurant' do
+        sign_up
         visit '/restaurants'
         expect(page).to have_content 'No restaurants yet'
         expect(page).to have_link 'Add a restaurant'
@@ -11,7 +12,9 @@ require 'rails_helper'
 
     context 'restaurants have been added' do
       before do
+        sign_up
         Restaurant.create( name: 'KFC')
+
       end
 
       scenario 'display restaruants' do
@@ -23,6 +26,7 @@ require 'rails_helper'
 
     context 'creating restaurants' do
       scenario 'prompts user to fill out a form, then displays the new restaurant' do
+        sign_up
         visit '/restaurants'
         click_link 'Add a restaurant'
         fill_in 'Name', with: 'KFC'
@@ -35,6 +39,7 @@ require 'rails_helper'
     context 'viewing restaurants' do
       let!(:kfc){Restaurant.create(name:'KFC')}
       scenario 'lets user view a restaurant' do
+        sign_up
         visit '/restaurants'
         click_link 'KFC'
         expect(page).to have_content 'KFC'
@@ -45,6 +50,7 @@ require 'rails_helper'
     context 'editing restaurants' do
       before { Restaurant.create name: 'KFC'}
       scenario 'let a user edit a restaurant' do
+        sign_up
         visit '/restaurants'
         click_link 'Edit KFC'
         fill_in 'Name', with: 'Kentucky Fried Chicken'
@@ -59,6 +65,7 @@ require 'rails_helper'
       before {Restaurant.create name: 'KFC'}
 
       scenario 'removes a restaurant when a user clicks a delete link' do
+        sign_up
         visit '/restaurants'
         click_link 'Delete KFC'
         expect(page).not_to have_content 'KFC'
@@ -68,6 +75,7 @@ require 'rails_helper'
 
     context 'invalid restuarant' do
       it 'does not let you submit a name that is too short' do
+        sign_up
         visit '/restaurants'
         click_link 'Add a restaurant'
         fill_in 'Name', with: 'kf'
@@ -76,4 +84,5 @@ require 'rails_helper'
         expect(page).to have_content 'error'
       end
     end
+
   end
