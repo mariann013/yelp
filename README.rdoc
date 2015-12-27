@@ -1,28 +1,15 @@
-== README
+== Yelp_clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Description
+-------
 
-Things you may want to cover:
+This application was built following the Makers Academy rails tutorial to build a yelp clone. It allows users to sign in and create businesses which can be reviewed by other users. Only the creator of the business can delete the page and users are only allowed to leave one review per page. Users are also only capable of deleting their own reviews.
 
-* Ruby version
+This application was built with rails and tested using rspec and capybara.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Instalattion:
+  - Clone git repo
+  - Run rspec to see tests
+  - Run bin/rails s and visit the localhost to interact with the application
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
